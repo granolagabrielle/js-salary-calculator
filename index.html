@@ -14,20 +14,20 @@
       </header>
     </section>
     <section>
-      <form id="form">
+      <form id="form" onSubmit="addEmployee(event)">
         <h2>Add Employee</h2>
-        <input placeholder="First Name" required />
-        <input placeholder="Last Name" required />
-        <input placeholder="Employee ID" required />
-        <input placeholder="Job Title" required />
-        <input placeholder="Annual Salary" required />
-        <button id="submit-button" onclick="addEmployee(event)" type="submit">Add Employee</button>
+        <input id="first-name" placeholder="First Name" value="Gabrielle" required />
+        <input id="last-name" placeholder="Last Name" value="Lommel" required />
+        <input id="employee-id" placeholder="Employee ID" type="number" value="1" required />
+        <input id="job-title" placeholder="Job Title" value="student" required />
+        <input id="annual-salary" placeholder="Annual Salary" type="number" value="60000" required />
+        <button id="submit-button" type="submit">Add Employee</button>
       </form>
     </section>
     <section>
       <h3>Employee Information</h3>
       <table id="table">
-        <tbody>
+        <tbody id="table-body">
           <thead>
             <tr>
               <th>First Name</th>
@@ -35,20 +35,14 @@
               <th>Employee ID</th>
               <th>Job Title</th>
               <th>Annual Salary</th>
+              <th></th>
             </tr>
           </thead>
         </tbody>
-        <tr>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-          <td>test</td>
-        </tr>
       </table>
     </section>
     <section>
-      <h4 id="monthly-cost">Total Monthly Salary Cost:</h4>
+      <h4 id="monthly-cost">Total Monthly Salary Cost: <span id="cost">0</span></h4>
     </section>
   </body>
 </html>
