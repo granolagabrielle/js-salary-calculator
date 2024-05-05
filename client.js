@@ -53,13 +53,20 @@ function renderEmployees() {
             <td>${employeeList[i].id}</td>
             <td>${employeeList[i].title}</td>
             <td>$${employeeList[i].salary}</td>
-            <td><button id="delete-button" onclick="removeEmployee(event)"</button></td>
+            <td><button id="delete-button" onclick="removeEmployee(event)">Delete</button></td>
         </tr>    
         `;
   }
 }
 
 // function to delete employee from table
+function removeEmployee(event) {
+  console.log('delete employee button was clicked');
+  const deleteButton = event.target;
+  const deletedEmployee = deleteButton.closest('tr').remove();
+  employeeList.splice(employeeList.indexOf(deletedEmployee), 1);
+  renderEmployees();
+}
 
 // calculate monthly salary costs
 function calculateCost() {
@@ -68,5 +75,19 @@ function calculateCost() {
     total += Math.ceil(person.salary / 12);
   }
   const salaryTotal = document.getElementById('cost');
-  salaryTotal.innerHTML = `$${total}`;
+  console.log(total);
+  if (total > 20000) {
+    salaryTotal.style.backgroundColor = '#FF0000';
+    salaryTotal.innerHTML = `$${total}`;
+  } else {
+    // salaryTotal.style.backgroundColor = '#FFFFFF';
+    salaryTotal.innerHTML = `$${total}`;
+  }
 }
+
+// function removeAndCalculate(event) {
+//   console.log('delete employee button was clicked');
+//   const deleteButton = event.target;
+//   const deletedEmployee = deleteButton.closest('tr').remove();
+//   employeeList.splice(employeeList.indexOf(deletedEmployee), 1);
+// }
