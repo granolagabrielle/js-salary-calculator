@@ -1,3 +1,9 @@
+// US dollar formatter
+const USDollar = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
+
 // on ready function
 
 onReady();
@@ -52,7 +58,7 @@ function renderEmployees() {
             <td>${employeeList[i].last}</td>
             <td>${employeeList[i].id}</td>
             <td>${employeeList[i].title}</td>
-            <td>$${employeeList[i].salary}</td>
+            <td>${USDollar.format(employeeList[i].salary)}</td>
             <td><button id="delete-button" onclick="removeEmployee(event)">Delete</button></td>
         </tr>    
         `;
@@ -66,6 +72,7 @@ function removeEmployee(event) {
   const deletedEmployee = deleteButton.closest('tr').remove();
   employeeList.splice(employeeList.indexOf(deletedEmployee), 1);
   renderEmployees();
+  calculateCost();
 }
 
 // calculate monthly salary costs
@@ -80,7 +87,7 @@ function calculateCost() {
     salaryTotal.style.backgroundColor = '#FF0000';
     salaryTotal.innerHTML = `$${total}`;
   } else {
-    // salaryTotal.style.backgroundColor = '#FFFFFF';
+    salaryTotal.style.backgroundColor = '#FFFFFF';
     salaryTotal.innerHTML = `$${total}`;
   }
 }
